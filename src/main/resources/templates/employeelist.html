@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Employees List</title>
+ <script type="text/javascript" src="button.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<div id="employeeSkill">
+			<form action="search" method="post">
+				<table class='table table-sm responsive'>
+					<thead class='thead-default'>
+						<tr>
+							<th>Check</th>
+							<th>Skill</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="skill : ${skills}">
+							<td><input type="checkbox" th:name="idSkill"
+								th:value="${skill}" /></td>
+							<td th:text="${skill}"></td>
+						</tr>
+					</tbody>
+				</table>
+				<button type="submit" class="btn btn-success">Search</button>
+			</form>
+
+		</div>
+
+		<div id="employeeList">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Role</th>
+						<th>Salary</th>
+						<th>Skills</th>
+					</tr>
+				</thead>
+				<tr th:each="employee : ${employees}">
+					<td><span th:text="${employee.name}"></span></td>
+					<td><span th:text="${employee.role}"></span></td>
+					<td><span th:text="${employee.salary}"></span></td>
+					<td><span th:each="a, eskill : ${employee.skills}" th:text="!${eskill.last} ? ${a} + ', ': ${a}"></span></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>
