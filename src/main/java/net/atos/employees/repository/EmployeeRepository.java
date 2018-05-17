@@ -2,6 +2,7 @@ package net.atos.employees.repository;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Level;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -49,7 +50,7 @@ public class EmployeeRepository {
             try {
                 this.employees = loadData();
             } catch (RepositoryException e) {
-                log.severe("Error at loading data!");
+                log.log(Level.SEVERE, "Error on Loading Data", e);
             }
         }
         return this.employees;
