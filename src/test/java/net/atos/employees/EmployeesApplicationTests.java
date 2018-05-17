@@ -18,34 +18,33 @@ import net.atos.employees.repository.EmployeeRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EmployeesApplicationTests {
-	
+
     private List<Employee> employees = new ArrayList<>();
-    
-	@Autowired
-	private EmployeeRepository employeeRepository; 
-		
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @Before
     public void initObjects() {
-    	employees = employeeRepository.getEmployees();
+        employees = employeeRepository.getEmployees();
     }
-    
-	@Test
-	public void contextLoads() {
-	}
-	
-	@Test
-	public void verifiyIfExistsSkills() {
-		Integer size = 0;
-		for (Employee emp : employees) {
-			size = emp.getSkills().size();
-		}
-		assertTrue(size > 0);
-	}
-	
-	@Test
-	public void verifiyIfTheDataIsLoaded() {
-		List<Employee> employees = employeeRepository.getEmployees();
-		assertTrue(employees.size() > 0);
-	}
 
+    @Test
+    public void contextLoads() {
+    }
+
+    @Test
+    public void verifiyIfExistsSkills() {
+        Integer size = 0;
+        for (Employee emp : employees) {
+            size += emp.getSkills().size();
+        }
+        assertTrue(size > 0);
+    }
+
+    @Test
+    public void verifiyIfTheDataIsLoaded() {
+        List<Employee> employees = employeeRepository.getEmployees();
+        assertTrue(employees.size() > 0);
+    }
 }

@@ -3,14 +3,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="js/button.js"></script>
 <title>Employees List</title>
- <script type="text/javascript" src="button.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 	<div class="container">
 		<div id="employeeSkill">
 			<form action="search" method="post">
+			    <h1>Find a Employee by Skill</h1>
 				<table class='table table-sm responsive'>
 					<thead class='thead-default'>
 						<tr>
@@ -26,7 +27,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<button type="submit" class="btn btn-success">Search</button>
+				<button type="submit" class="btn btn-success" disabled="disabled">Search</button>
 			</form>
 
 		</div>
@@ -45,7 +46,8 @@
 					<td><span th:text="${employee.name}"></span></td>
 					<td><span th:text="${employee.role}"></span></td>
 					<td><span th:text="${employee.salary}"></span></td>
-					<td><span th:each="a, eskill : ${employee.skills}" th:text="!${eskill.last} ? ${a} + ', ': ${a}"></span></td>
+					<td><span th:each="a, eskill : ${employee.skills}"
+						th:text="!${eskill.last} ? ${a} + ', ': ${a}"></span></td>
 				</tr>
 			</table>
 		</div>
@@ -53,6 +55,7 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/button.js"></script>
 
 </body>
 </html>
